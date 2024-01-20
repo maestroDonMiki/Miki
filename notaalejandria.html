@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora de notas</title>
+</head>
+<body>
+  <h1>Calculadora de notas</h1>
+  <p>¿Cuántas preguntas tiene la prueba?</p>
+  <input type="number" id="preguntas" name="preguntas"><br><br>
+  <p>¿Cuántas preguntas son correctas?</p>
+  <input type="number" id="correctas" name="correctas"><br><br>
+  <button type="button" onclick="calculate()">Calcular</button><br><br>
+  <p id="incorrectas"></p>
+  <p id="nota"></p>
+  <p id="notaSobre10"></p>
+
+  <script>
+    function calculate() {
+      var preguntas = document.getElementById("preguntas").value;
+      var correctas = document.getElementById("correctas").value;
+      var incorrectas = preguntas - correctas;
+      document.getElementById("incorrectas").innerHTML = "Palabras incorrectas: " + incorrectas;
+      var penalizacion = incorrectas * 0.33;
+      var NotaTotal = correctas - penalizacion;
+      document.getElementById("nota").innerHTML = "Nota de la prueba: " + NotaTotal;
+      var NotaSobre10 = (NotaTotal * 10) / preguntas;
+      document.getElementById("notaSobre10").innerHTML = "Nota sobre 10: " + NotaSobre10.toFixed(2);
+    }
+  </script>
+</body>
+</html>
